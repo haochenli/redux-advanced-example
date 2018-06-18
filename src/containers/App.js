@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
+import Popup from '../components/Posts'
 
 class App extends Component {
   static propTypes = {
@@ -65,6 +66,7 @@ class App extends Component {
               <Posts posts={posts} />
             </div>
         }
+        <Popup />
       </div>
     )
   }
