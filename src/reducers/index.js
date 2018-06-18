@@ -44,6 +44,8 @@ const posts = (state = {
 }
 
 const postsBySubreddit = (state = { }, action) => {
+  console.log('action', action)
+  console.log('state', state)
   switch (action.type) {
     case INVALIDATE_SUBREDDIT:
     case RECEIVE_POSTS:
