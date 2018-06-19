@@ -4,9 +4,13 @@ import { connect } from 'react-redux'
 import { selectSubreddit, fetchPostsIfNeeded, invalidateSubreddit } from '../actions'
 import Picker from '../components/Picker'
 import Posts from '../components/Posts'
-import Popup from '../components/Posts'
+import Popup from '../components/Popup'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.subReddit = 'reactjs'
+  }
   static propTypes = {
     selectedSubreddit: PropTypes.string.isRequired,
     posts: PropTypes.array.isRequired,
@@ -14,7 +18,6 @@ class App extends Component {
     lastUpdated: PropTypes.number,
     dispatch: PropTypes.func.isRequired
   }
-
   componentDidMount() {
     const { dispatch, selectedSubreddit } = this.props
     dispatch(fetchPostsIfNeeded(selectedSubreddit))
@@ -28,9 +31,18 @@ class App extends Component {
   }
 
   handleChange = nextSubreddit => {
-    this.props.dispatch(selectSubreddit(nextSubreddit))
+    this.refs.confirmaPopUp.show()
+    this.subReddit = nextSubreddit
   }
 
+  closePopup = () => {
+    this.refs.confirmaPopUp.hide()
+  }
+
+  onConfirmPopup = () => {
+    this.props.dispatch(selectSubreddit(this.subReddit))
+    this.refs.confirmaPopUp.hide()
+  }
   handleRefreshClick = e => {
     e.preventDefault()
 
@@ -44,6 +56,7 @@ class App extends Component {
     const isEmpty = posts.length === 0
     return (
       <div>
+        <Popup ref='confirmaPopUp' onConfirm={this.onConfirmPopup} closePopup={this.closePopup}/>
         <Picker value={selectedSubreddit}
                 onChange={this.handleChange}
                 options={[ 'reactjs', 'frontend' ]} />
@@ -66,7 +79,6 @@ class App extends Component {
               <Posts posts={posts} />
             </div>
         }
-        <Popup />
       </div>
     )
   }

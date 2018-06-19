@@ -4,30 +4,32 @@ import PropTypes from 'prop-types'
 class Popup extends React.Component {
   constructor(props) {
     super(props)
-    this.state({
+    this.state = {
       isShow: false
-    })
+    }
   }
 
-  componentDidMount() {
-    this.setState({isShow: this.props.isShow})
-  }
-
-  _show = () => {
+  show = () => {
     this.setState({isShow: true})
   }
   
-  _hide = () => {
+  hide = () => {
     this.setState({isShow: false})
   }
 
   render() {
+    const { closePopup, onConfirm } = this.props
     return this.state.isShow ? <div className='popup'>
     <div className='popup_inner'>
-      <h1>{this.props.text}</h1>
-    <button onClick={this.props.closePopup}>close me</button>
+      <h1>PopUp</h1>
+    <button onClick={closePopup}>close me</button>
+    <button onClick={onConfirm}>Confirm</button>
     </div>
   </div> : null
   }
+}
+Popup.protoType = {
+  closePopup: PropTypes.func,
+  onConfirm: PropTypes.func
 }
 export default Popup

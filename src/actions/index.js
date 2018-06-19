@@ -45,7 +45,7 @@ const shouldFetchPosts = (state, subreddit) => {
 
 export const fetchPostsIfNeeded = subreddit => (dispatch, getState) => {
   if (shouldFetchPosts(getState(), subreddit)) { // basically the thunk makes action creator 
-    //return a function and  also pass into 'getState' and 'dispatch' method, which makes dispatch 
+    //return a function to dispatch and also pass into 'getState' and 'dispatch' method, which makes dispatch 
     // then dispatch possible 
     return dispatch(fetchPosts(subreddit))
   }
