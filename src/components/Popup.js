@@ -23,8 +23,8 @@ class Popup extends React.Component {
     <div className='popup_inner'>
       <h1>PopUp</h1>
       <div className='button-wrapper'>
-        <button onClick={closePopup}>close me</button>
-        <button onClick={onConfirm}>Confirm</button>
+          <button className='closeButton' onClick={closePopup}>close me</button>
+          <button className='confirmButton' onClick={onConfirm}>Confirm</button>
       </div>
     </div>
   </div> : null

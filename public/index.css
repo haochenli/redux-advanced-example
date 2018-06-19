@@ -11,6 +11,8 @@
   background-color: rgba(0,0,0, 0.5);
 }
 .popup_inner {
+  flex-direction: column;
+  justify-content: space-between;
   display: flex;
   position: absolute;
   left: 25%;
@@ -19,4 +21,17 @@
   bottom: 25%;
   margin: auto;
   background: white;
+}
+h1 {
+  text-align: center;
+}
+.button-wrapper {
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  bottom: 10%;
+}
+.confirmButton{
+  margin-left: 10%;
 }
