@@ -11,6 +11,7 @@
   background-color: rgba(0,0,0, 0.5);
 }
 .popup_inner {
+  display: flex;
   position: absolute;
   left: 25%;
   right: 25%;

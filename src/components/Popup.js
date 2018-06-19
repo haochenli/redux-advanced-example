@@ -22,8 +22,10 @@ class Popup extends React.Component {
     return this.state.isShow ? <div className='popup'>
     <div className='popup_inner'>
       <h1>PopUp</h1>
-    <button onClick={closePopup}>close me</button>
-    <button onClick={onConfirm}>Confirm</button>
+      <div className='button-wrapper'>
+        <button onClick={closePopup}>close me</button>
+        <button onClick={onConfirm}>Confirm</button>
+      </div>
     </div>
   </div> : null
   }
